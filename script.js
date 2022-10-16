@@ -3,7 +3,7 @@ const MATCH_ID = 101;
 var hiddenArr = ['.pp_slide_1 .pp_element_1', '.pp_slide_1 .pp_element_2', '.pp_slide_1 .pp_element_3', '.pp_slide_1 .pp_element_4', '.pp_slide_1 .pp_team1', '.pp_slide_1 .pp_team2']
 
 
-gsap.to(['.pp_slide_1 .pp_element_2', '.pp_slide_1 .pp_element_3'], { duration: 1, scaleX: .95, scaleY: .95, repeat: -1, yoyo: true, stagger: .5 });
+gsap.to(['.pp_slide_1 .pp_element_2', '.pp_slide_1 .pp_element_3'], { duration: 1, scaleX: 1.05, scaleY: 1.05, repeat: -1, yoyo: true, stagger: .5 });
 
 var data = new FormData();
 data.append("MATCH_ID", MATCH_ID);
@@ -34,13 +34,13 @@ function voteUpdate(teamName) {
     .to('.pp_slide_2 .pp_element_1', { x: 300, duration: .8 }, "<")
     .fromTo('.pp_slide_3 .pp_element_1', { display: 'none', x: -300 }, { x: 0, display: "block", duration: .8 }, "<.2")
     .fromTo('.pp_slide_3 .pp_element_2', { display: 'none', x: -300, opacity: 0 }, { x: 0, opacity: 1, display: "block", duration: .8 }, "<")
-    .fromTo('.pp_slide_3 .resultBar', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 5 }, "<")
-    .fromTo('.pp_slide_3 .resultBar2', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 5 }, "<")
-    .fromTo('.pp_slide_3 .pp_resulTteam1_percentage', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 5 }, "<")
-    .fromTo('.pp_slide_3 .pp_resulTteam2_percentage', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 5 }, "<")
+    .fromTo('.pp_slide_3 .resultBar', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<")
+    .fromTo('.pp_slide_3 .resultBar2', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<")
+    .fromTo('.pp_slide_3 .pp_resulTteam1_percentage', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 6 }, "<")
+    .fromTo('.pp_slide_3 .pp_resulTteam2_percentage', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8, zIndex: 6 }, "<")
     .fromTo('.pp_slide_3 .pp_resulTteam1', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<")
     .fromTo('.pp_slide_3 .pp_resulTteam2', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<")
-    .fromTo('.pp_slide_3 .pp_resulTteam2', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<")
+    .fromTo('.pp_slide_3 .pp_resulTteam2', { display: 'none', opacity: 0 }, { opacity: 1, display: "block", duration: .8 }, "<");
 
   setPercentage();
 
@@ -76,12 +76,17 @@ function setPercentage() {
         if (team1_percentage == team2_percentage) {
           document.querySelector('.resultBar').style.width = '65px';
           document.querySelector('.resultBar2').style.width = '65px';
-
-
+          document.querySelector('.resultBar').style.zIndex = '5'
+          document.querySelector('.resultBar2').style.zIndex = '5'
         } else if (team1_percentage > team2_percentage) {
           document.querySelector('.resultBar').style.width = 20 + team1_percentage + 'px';
+          document.querySelector('.resultBar').style.zIndex = '5'
+          document.querySelector('.resultBar2').style.zIndex = '4'
         } else if (team1_percentage < team2_percentage) {
           document.querySelector('.resultBar2').style.width = 20 + team2_percentage + 'px';
+          document.querySelector('.resultBar2').style.zIndex = '5'
+          document.querySelector('.resultBar').style.zIndex = '5'
+
         }
       }
 
