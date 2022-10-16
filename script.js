@@ -1,5 +1,7 @@
 // var hiddenArr = ['.pp_slide_1 .pp_element_1','.pp_slide_1 .pp_element_2','.pp_slide_1 .pp_element_3','.pp_slide_1 .pp_element_4','.pp_slide_1 .pp_element_5','.pp_slide_2 .pp_element_1','.pp_slide_2 .pp_element_2','.pp_slide_2 .pp_element_3'];
 
+var hiddenArr = ['.pp_slide_1 .pp_element_1','.pp_slide_1 .pp_element_2','.pp_slide_1 .pp_element_3','.pp_slide_1 .pp_element_4','.pp_slide_1 .pp_team1','.pp_slide_1 .pp_team2']
+
 // gsap.timeline({ defaults: { ease: "power1.inOut" },repeat:-1, delay:.8 })
 //     .fromTo('.pp_slide_1 .pp_element_1',{x:250}, {x:0, opacity: 1, display: "block", duration: 1 })
 //     .fromTo('.pp_slide_1 .pp_element_2',{x:80,y:20,scaleX:.3,scaleY:.3}, {x:0,y:0,scaleX:1,scaleY:1,rotate:-310, display: "block", duration: 1 },">-.3")
@@ -15,6 +17,7 @@
 //     .fromTo('.pp_slide_2 .pp_element_3',{display:'none',y:-100}, {y:0,display: "block", duration: .7 },">-.2")
 //     .to(hiddenArr, {display: "none", duration: .5 },">1.5")
 
+gsap.to(['.pp_slide_1 .pp_element_2','.pp_slide_1 .pp_element_3'], {duration:1, scaleX:.95,scaleY:.95,repeat:-1,yoyo:true,stagger:.5});
 
 fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php')
   .then((response) => response.json())
@@ -34,6 +37,19 @@ document.querySelector('.pp_team2').addEventListener('click', ()=>{voteUpdate('T
 
 function voteUpdate(teamName){
   voteWork(teamName);
+  gsap.timeline({ defaults: { ease: "power1.inOut" }})
+  .to(hiddenArr,{opacity:0,duration:.5,stagger:.1})
+    .fromTo('.pp_slide_2 .pp_element_1',{display:'none',x:-300}, {x:0,display: "block", duration: .8 },">-.3")
+    .fromTo('.pp_slide_2 .pp_element_2',{display:'none',x:300}, {x:0,display: "block", duration: .8 },"<.1")
+    .to('.pp_slide_2 .pp_element_2', {opacity:0, duration: .8 },">1")
+    .to('.pp_slide_1 .pp_bg', {x:-300, duration: .8 },">-.3")
+    .to('.pp_slide_2 .pp_element_1', {x:300, duration: .8 },"<")
+    .fromTo('.pp_slide_3 .pp_element_1',{display:'none',x:-300}, {x:0,display: "block", duration: .8 },"<.2")
+    .fromTo('.pp_slide_3 .pp_element_2',{display:'none',x:-300,opacity:0}, {x:0,opacity:1,display: "block", duration: .8 },"<")
+    .fromTo('.pp_slide_3 .resultBar',{display:'none',opacity:0}, {opacity:1,display: "block", duration: .8 },"<")
+    .fromTo('.pp_slide_3 .pp_resulTteam1',{display:'none',opacity:0}, {opacity:1,display: "block", duration: .8 },"<")
+    .fromTo('.pp_slide_3 .pp_resulTteam2',{display:'none',opacity:0}, {opacity:1,display: "block", duration: .8 },"<")
+
 
 }
 
