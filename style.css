@@ -1,3 +1,7 @@
+@font-face {
+  font-family: font_siyamRupali;
+  src: url('./Slide1/Siyamrupali.ttf');
+}
 * {
   margin: 0;
   box-sizing: border-box;
@@ -67,7 +71,7 @@ html {
 .teamName {
   font-size: 20px;
   color: #fff;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: font_siyamRupali,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   cursor: pointer;
 }
 
@@ -129,7 +133,7 @@ html {
 .resultTeamName {
   font-size: 14px;
   color: #fff;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: font_siyamRupali,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .pp_resulTteam1 {
@@ -146,7 +150,7 @@ html {
   font-size: 14px;
   color: #fff;
   padding: 0px 5px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: font_siyamRupali,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .pp_resulTteam1_percentage {
