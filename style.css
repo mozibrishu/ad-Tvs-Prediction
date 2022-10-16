@@ -114,7 +114,6 @@ html {
   left: 86px;
   border-radius: 10px;
   opacity: 1;
-  z-index: -1;
 }
 .pp_slide_3 .resultBar2 {
   width: 130px;
@@ -124,7 +123,6 @@ html {
   right: 85px;
   border-radius: 10px;
   opacity: 1;
-  z-index: -1;
 }
 
 /* team bangla */
@@ -149,11 +147,9 @@ html {
   color: #fff;
   padding: 0px 5px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  z-index: 99;
 }
 
 .pp_resulTteam1_percentage {
-  z-index: 99;
   top: 216px;
   left: 86px;
 }
@@ -161,7 +157,6 @@ html {
 .pp_resulTteam2_percentage {
   top: 216px;
   right: 85px;
-  z-index: 99;
 }
 
 /* utility class */
