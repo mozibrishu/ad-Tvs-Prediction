@@ -19,6 +19,7 @@
 fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php')
   .then((response) => response.json())
   .then((data) => {
+    // console.log(data);
     document.querySelector('.pp_team1').innerText = data.TEAM1;
     document.querySelector('.pp_team2').innerText = data.TEAM2;
     document.querySelector('.pp_resulTteam1').innerText = data.TEAM1;
@@ -26,3 +27,37 @@ fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php')
   
   });
 
+document.querySelector('.voteTeam1').addEventListener('click', ()=>{voteUpdate('TEAM1_VOTE')});
+document.querySelector('.pp_team1').addEventListener('click', ()=>{voteUpdate('TEAM1_VOTE')});
+document.querySelector('.voteTeam2').addEventListener('click', ()=>{voteUpdate('TEAM2_VOTE')});
+document.querySelector('.pp_team2').addEventListener('click', ()=>{voteUpdate('TEAM2_VOTE')});
+
+function voteUpdate(teamName){
+  voteWork(teamName);
+
+}
+
+
+function voteWork(teamName){
+  const formData = new FormData();
+  formData.append("TEAM_VOTE", teamName);
+
+  var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function () {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         if ('success' == this.responseText) {
+    //             setInnerHtml('banner', "<h3 id='submissionSuccess'>Successfully Inserted</h3>");
+    //         } else if ('used' == this.responseText) { 
+    //             setInnerHtml('errorCheck', "*Mobile Number is Already used<br>");
+    //             addClass('mobile','error');
+    //             removeClass('mobile', 'valid');
+    //          }
+    //         else {
+    //             document.getElementById("banner").innerHTML = "<p>" + this.responseText + "</p>";
+    //         }
+    //     }
+    // };
+
+    xhttp.open("POST", 'http://localhost/ad-tvs-backend/updateVote.php', true);
+    xhttp.send(formData);
+}

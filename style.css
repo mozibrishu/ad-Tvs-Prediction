@@ -42,11 +42,13 @@ html {
 .pp_slide_1 .pp_element_2 {
   top: 142px;
   left: 23px;
+  cursor: pointer;
 }
 
 .pp_slide_1 .pp_element_3 {
   top: 142px;
   left: 162px;
+  cursor: pointer;
 }
 
 .pp_slide_1 .pp_element_4 {
@@ -66,6 +68,7 @@ html {
   font-size: 23px;
   color: #fff;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  cursor: pointer;
 }
 
 .pp_team1 {
