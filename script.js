@@ -16,7 +16,10 @@ fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php', { method: "POST"
     document.querySelector('.pp_resulTteam1').innerText = data.TEAM1;
     document.querySelector('.pp_resulTteam2').innerText = data.TEAM2;
 
-  });
+  })
+  .catch (error => {
+  console.error('There was an error!', error);
+});
 
 document.querySelector('.voteTeam1').addEventListener('click', () => { voteUpdate('TEAM1_VOTE') });
 document.querySelector('.pp_team1').addEventListener('click', () => { voteUpdate('TEAM1_VOTE') });
@@ -58,10 +61,20 @@ function voteWork(teamName) {
 }
 
 function setPercentage() {
-  fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php',{ method: "POST", body: data })
+  fetch('http://localhost/ad-tvs-backend/getMatchPrediction.php', { method: "POST", body: data })
     .then((response) => response.json())
     .then(({ TEAM1_VOTE, TEAM2_VOTE }) => {
-      totalVote = TEAM1_VOTE + TEAM2_VOTE;
+      setPercentageTo(TEAM1_VOTE,TEAM2_VOTE )
+    })
+    .catch (error => {
+    console.error('There was an error!', error);
+    setPercentageTo(6,4 );
+  });
+}
+
+
+function setPercentageTo(TEAM1_VOTE,TEAM2_VOTE ) {
+  totalVote = TEAM1_VOTE + TEAM2_VOTE;
       console.log(TEAM1_VOTE, TEAM2_VOTE);
       if (totalVote == 0) {
 
@@ -89,6 +102,4 @@ function setPercentage() {
 
         }
       }
-
-    });
 }
